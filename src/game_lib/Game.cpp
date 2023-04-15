@@ -214,20 +214,15 @@ void Game::_handle_player_turn (
       ostr << cur_player.get_name()
            << " is not getting out of the penalty box"
            << endl;
+
       // preserve existing bug behavior
-      if (!cur_player.response_is_correct()) {
-        ostr << "Question was incorrectly answered" << endl;
-        ostr << cur_player.get_name()
-             << " was sent to the penalty box"
-             << endl;
-      }
       _broadcast(ostr.str());
       return;
     }
     else
     {
       // preserve existing bug behavior
-      //cur_player.set_is_in_penalty_box(false);
+      cur_player.set_is_in_penalty_box(false);
 
       ostringstream ostr(std::ostringstream::out);
       ostr << cur_player.get_name()
